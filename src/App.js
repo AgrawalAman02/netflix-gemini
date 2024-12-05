@@ -1,8 +1,9 @@
+import loginBg from "./assets/images/LoginBg.jpg"
+import Body from "./component/Body";
+
 function App() {
   return (
-    <div className="App ">
-      <p className="text-lg font-bold">hii </p> 
-    </div>
+    <Body/>
   );
 }
 
