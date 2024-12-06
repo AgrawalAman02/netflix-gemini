@@ -2,17 +2,16 @@ import React, { useRef, useState } from 'react'
 import Header from './Header'
 import LoginBg from "../assets/images/LoginBg.jpg"
 import { checkValidData } from '../utils/validation'
-import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../utils/userSlice'
 import { createUserWithEmailAndPassword, updateProfile,signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase'
+import { AVATAR } from '../utils/constants'
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [rememberMe, setRememberMe] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const emailRef = useRef(null);
@@ -47,7 +46,7 @@ const Login = () => {
           updateProfile(user, {
               displayName: nameRef.current.value,
               // phoneNumber : phoneNo, 
-              photoURL: "https://images.unsplash.com/photo-1572619370358-f372dba31e73?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fG5ldGZsaXh8ZW58MHx8MHx8fDA%3D"
+              photoURL: AVATAR
             }).then(() => {
               // Profile updated!
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -59,7 +58,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             }).catch((error) => {
               setErrorMsg(error.message);
             });     
@@ -76,7 +74,6 @@ const Login = () => {
       // Signed in 
       const user = userCredential.user;
       console.log(user);
-        navigate("/browse");
       })
       .catch((error) => {
       console.log(error.code+  " - "+ error.message);
