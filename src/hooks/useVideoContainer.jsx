@@ -3,24 +3,52 @@ import { API_OPTIONS } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addTrailerVideo } from "../utils/movieSlice";
 
+const useVideoContainer = (movieId) => {
+  const dispatch = useDispatch();
 
-const useVideoContainer = (movieId)=>{
-    const dispatch = useDispatch();
-
-    const getMovieVIdeos= async ()=>{
-
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos`,API_OPTIONS);
-        const data = await response.json();
-        
-        const filteredData = data.results.filter((element)=>element.type==="Trailer");
-        const trailerVdo = filteredData.length ? filteredData[0] : data.results[0];
-        dispatch(addTrailerVideo(trailerVdo));
-
+  const getMovieVideos = async () => {
+    if (!movieId) {
+      dispatch(addTrailerVideo(null));
+      return;
     }
 
-    useEffect(()=>{
-        getMovieVIdeos();
-    },[])
-}
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}/videos`,
+        API_OPTIONS
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch trailer videos.");
+      }
+
+      const data = await response.json();
+
+      // Filter for official trailers
+      const filteredData = data.results.filter(
+        (element) =>
+          element.type === "Trailer" && element.site === "YouTube" && element.official
+      );
+
+      const trailerVdo = filteredData.length
+        ? filteredData[0]
+        : data.results.filter(
+            (element) =>
+                element.site === "YouTube" &&
+                (element.type === "Teaser" || element.type === "Clip")
+            )[0] || null;
+
+      dispatch(addTrailerVideo(trailerVdo));
+    } catch (error) {
+      console.error("Error fetching trailer videos:", error);
+      dispatch(addTrailerVideo(null));
+    }
+  };
+
+  useEffect(() => {
+    getMovieVideos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [movieId]); // Added movieId as a dependency
+};
 
 export default useVideoContainer;

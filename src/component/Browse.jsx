@@ -7,6 +7,9 @@ import Header from './Header';
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
+import usePopularMovies from '../hooks/usePopularMovies';
+import useTopRatedMovies from '../hooks/useTopRatedMovies';
+import useUpcomingMovies from '../hooks/useUpcomingMovies';
 
 const Browse = () => {
   const navigate = useNavigate();
@@ -19,6 +22,9 @@ const Browse = () => {
   }
 
   useNowPlayingMovies(); 
+  usePopularMovies();
+  useTopRatedMovies();
+  useUpcomingMovies();
 
   return (
     <div className='max-h-screen w-screen'>
@@ -39,7 +45,7 @@ const Browse = () => {
       <div className=''>
         <MainContainer/>
       </div>
-      <div className='px-8 mt-2'>
+      <div className='px-2 md:px-8 '>
         <SecondaryContainer/>
       </div>
       

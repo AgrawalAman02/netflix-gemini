@@ -1,24 +1,31 @@
-import React from 'react'
-import VideoContainer from './VideoContainer'
-import VideoTitle from './VideoTitle'
-import { useSelector } from 'react-redux'
+// src/component/MainContainer.jsx
+
+import React, { useState, useEffect } from "react";
+import VideoContainer from "./VideoContainer";
+import VideoTitle from "./VideoTitle";
+import { useSelector } from "react-redux";
 
 const MainContainer = () => {
-  const movies = useSelector((store)=>store.movies?.nowPlayingMovies);
-  if(!movies) return ;
+  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
+  const [mainMovie, setMainMovie] = useState(null);
 
-  const mainMovie = movies[0];
-  // console.log(mainMovie);
+  useEffect(() => {
+    if (movies && movies.length > 0) {
+      const randomIndex = Math.floor(Math.random() * movies.length);
+      setMainMovie(movies[randomIndex]);
+    }
+  }, [movies]);
 
-  const {original_title , overview,id} = mainMovie;
+  if (!mainMovie) return null;
+
+  const { original_title, overview, id } = mainMovie;
 
   return (
-    <div className='relative z-10'>
-      <VideoTitle title={original_title} overview ={overview}/>
-      <VideoContainer movieId = {id}/>
-        
+    <div className="relative z-10">
+      <VideoTitle title={original_title} overview={overview} />
+      <VideoContainer movieId={id} />
     </div>
-  )
-}
+  );
+};
 
-export default MainContainer
+export default MainContainer;
