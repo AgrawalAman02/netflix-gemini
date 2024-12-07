@@ -11,18 +11,18 @@ const MainContainer = () => {
 
   useEffect(() => {
     if (movies && movies.length > 0) {
-      const randomIndex = Math.floor(Math.random() * movies.length);
-      setMainMovie(movies[randomIndex]);
+      
+      setMainMovie(movies[17]);
     }
   }, [movies]);
 
   if (!mainMovie) return null;
 
-  const { original_title, overview, id } = mainMovie;
+  const { title, overview, id } = mainMovie;
 
   return (
     <div className="relative z-10">
-      <VideoTitle title={original_title} overview={overview} />
+      <VideoTitle title={title} overview={overview} />
       <VideoContainer movieId={id} />
     </div>
   );

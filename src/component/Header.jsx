@@ -31,7 +31,7 @@ const Header = () => {
 
   },[]);
   return (
-    <div className={`absolute  ${loggedIn?"px-[1.5rem]":"px-[9.7rem] bg-gradient-to-b from-black"}  py-2 w-full h-20 z-30`}>
+    <div className={`absolute  ${loggedIn?"px-[1.5rem]":"px-[9.7rem] bg-gradient-to-b from-black"}  py-2  h-20 z-30`}>
         <img src={netflixIcon} alt="netfloxIcon"  className='w-[11.5rem] h-[4.8rem]'/>
     </div>
   )
