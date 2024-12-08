@@ -20,4 +20,10 @@ export const SUPPORTED_LANGUAGES = [
         { identifier : "en", name :"English"},
         { identifier : "hi", name :"Hindi"},
         { identifier : "bng", name :"Bangla"},
-]
+];
+
+export const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
+
+export const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
+
+export const SEARCH_OFFSET = 10;

@@ -3,7 +3,7 @@ import { auth } from '../utils/firebase';
 import netflixIcon from "../assets/images/Netflix_Logo_PMS.png"
 import { onAuthStateChanged} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 
 const Header = () => {
@@ -31,7 +31,7 @@ const Header = () => {
 
   },[]);
   return (
-    <div className={`absolute  ${loggedIn?"px-[1.5rem]":"px-[9.7rem] bg-gradient-to-b from-black"}  py-2  h-20 z-30`}>
+    <div className={`fixed ${loggedIn?"px-[1.5rem]":"px-[9.7rem] bg-gradient-to-b from-black"}  py-2  h-20 z-30`}>
         <img src={netflixIcon} alt="netfloxIcon"  className='w-[11.5rem] h-[4.8rem]'/>
     </div>
   )

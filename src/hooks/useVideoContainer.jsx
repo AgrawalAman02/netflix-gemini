@@ -39,6 +39,7 @@ const useVideoContainer = (movieId) => {
             )[0] || null;
 
       dispatch(addTrailerVideo(trailerVdo));
+      
     } catch (error) {
       console.error("Error fetching trailer videos:", error);
       dispatch(addTrailerVideo(null));

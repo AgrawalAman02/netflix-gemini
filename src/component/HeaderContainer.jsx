@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import searchIcon from "../assets/images/search.svg"
 import GptSearch from "./GptSearch.jsx";
-import { toggleGptSearch } from '../utils/gptSlice.jsx';
+import { addSearchResult, toggleGptSearch } from '../utils/gptSlice.jsx';
 import { SUPPORTED_LANGUAGES } from '../utils/constants.js';
 import { changeLanguage } from '../utils/configSlice.jsx';
 import lang from '../utils/languageConstants.jsx';
@@ -23,6 +23,8 @@ const HeaderContainer = () => {
       signOut(auth).catch((error) => {
         navigate("/error")
       });
+      dispatch(toggleGptSearch(false));
+      dispatch(addSearchResult({movieNames : null, movieList : null}));
     }
 
     const handleSearchClick=()=>{
@@ -37,19 +39,19 @@ const HeaderContainer = () => {
     <div>
         <div className='header'>
             <Header/>
-            {showGpt && <GptSearch/>}
-            <div className='flex gap-6  absolute z-40 right-12 top-6'>
+            {user && showGpt && <GptSearch/>}
+            <div className='flex gap-4  fixed z-40 right-12 top-6'>
                 {user && user.photoURL && (
                 <>
                     {showGpt &&  <select 
                         name="langSelect" 
                         id="langSelect" 
-                        className='rounded-2xl rounded-l-xl bg-red-600 font-semibold bg-opacity-40 p-1 px-2'
+                        className=' rounded-xl bg-red-600 font-semibold bg-opacity-40 p-.5 px-2'
                         onChange={(e)=>handleLanguageChange(e)}
                     >
                         {
                             SUPPORTED_LANGUAGES.map((lang)=>(
-                                <option className='rounded-xl text-black font-semibold' key={lang.identifier} value={lang.identifier}>{lang.name}</option>
+                                <option className=' rounded-xl text-black font-semibold' key={lang.identifier} value={lang.identifier}>{lang.name}</option>
                             ))
                         }
                     </select>

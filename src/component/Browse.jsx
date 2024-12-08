@@ -17,9 +17,10 @@ const Browse = () => {
   usePopularMovies();
   useTopRatedMovies();
   useUpcomingMovies();
+  
 
   return (
-    <div className='max-h-screen w-screen'>
+    <div className='max-h-screen w-screen relative'>
 
       <HeaderContainer/>
 
@@ -32,7 +33,7 @@ const Browse = () => {
           <div className='px-2 md:px-8 '>
             <SecondaryContainer/>
           </div>
-          
+
         </>
       }
       

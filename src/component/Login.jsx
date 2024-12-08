@@ -72,7 +72,7 @@ const Login = () => {
       signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
       .then((userCredential) => {
       // Signed in 
-      const user = userCredential.user;
+      // const user = userCredential.user;
       // console.log(user);
       })
       .catch((error) => {
