@@ -22,8 +22,13 @@ const gptSlice = createSlice({
         decreaseCount : (state)=>{
             state.count--;
         },
+        resetGptState: () => ({
+            showGptSearch: false,
+            movieNames: null,
+            movieList: null,
+        }),
     }
 });
 
-export const {toggleGptSearch,addSearchResult,decreaseCount} = gptSlice.actions;
+export const {toggleGptSearch,addSearchResult,decreaseCount,resetGptState} = gptSlice.actions;
 export default gptSlice.reducer;

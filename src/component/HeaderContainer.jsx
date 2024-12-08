@@ -23,7 +23,7 @@ const HeaderContainer = () => {
       signOut(auth).catch((error) => {
         navigate("/error")
       });
-      dispatch(toggleGptSearch(false));
+    //   dispatch(toggleGptSearch(false));
       dispatch(addSearchResult({movieNames : null, movieList : null}));
     }
 

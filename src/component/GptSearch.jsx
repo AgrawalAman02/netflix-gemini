@@ -23,7 +23,7 @@ const GptSearch = () => {
       API_OPTIONS
     );
 
-    const data = response.json();
+    const data = await response.json();
     if(!data) return null;
     return data;
   }

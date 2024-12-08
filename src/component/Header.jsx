@@ -5,6 +5,7 @@ import { onAuthStateChanged} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
+import { resetGptState } from '../utils/gptSlice';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -17,12 +18,14 @@ const Header = () => {
         // User is signed in
         setLoggedIn(true);
         const {uid,email,displayName,photoURL} = user;
-        dispatch(addUser({uid:uid, email : email , displayName : displayName,photoURL:photoURL}));  
+        dispatch(addUser({uid:uid, email : email , displayName : displayName,photoURL:photoURL})); 
+        
         navigate("/browse");
       } else {
         // User is signed out
         setLoggedIn(false)
         dispatch(removeUser());
+        dispatch(resetGptState()); 
         navigate("/");
       }
     });
