@@ -13,6 +13,7 @@ const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -27,16 +28,21 @@ const Login = () => {
 
   const handleButtonClick =async (e) => {
     e.preventDefault(); // Prevent default form submission
+    setIsLoading(true);
     const message = checkValidData(emailRef.current.value, passwordRef.current.value);
     setErrorMsg(message);
 
-    if(message) return ;
+    if (message) {
+      setIsLoading(false); 
+      return;
+    }
 
     // signIn / signUp logic
     if(!isSignIn) 
     {
       if (passwordRef.current.value !== confPasswordRef.current.value) {
         setErrorMsg("Passwords do not match");
+        setIsLoading(false);
         return; // Prevent further execution
       }
       createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
@@ -58,13 +64,16 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
+              setIsLoading(false);
             }).catch((error) => {
               setErrorMsg(error.message);
+              setIsLoading(false);
             });     
       })
         .catch((error) => {
           console.log(error.code+  " - "+  error.message);
           setErrorMsg('ERROR : Can\'t Sign-Up');
+          setIsLoading(false);
       });
     }
     else 
@@ -74,10 +83,12 @@ const Login = () => {
       // Signed in 
       // const user = userCredential.user;
       // console.log(user);
+      setIsLoading(false);
       })
       .catch((error) => {
       console.log(error.code+  " - "+ error.message);
       setErrorMsg('ERROR : Invalid Credentials...');
+      setIsLoading(false);
       });
     }
   }
@@ -173,9 +184,10 @@ const Login = () => {
 
           <button 
             type="submit" 
+            disabled={isLoading}
             className='p-2 py-6 w-[20rem] rounded-md h-[3.3rem] bg-[#fb1b1b] text-white font-semibold flex justify-center items-center'
           >
-            {isSignIn ? "Sign In" : "Sign Up"}
+            {isLoading? "Loading..." :( isSignIn ? "Sign In" : "Sign Up")}
           </button>
           
           {isSignIn && <h2 className='font-medium text-lg'>OR</h2>}
