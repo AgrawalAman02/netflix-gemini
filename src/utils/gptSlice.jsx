@@ -26,6 +26,7 @@ const gptSlice = createSlice({
             showGptSearch: false,
             movieNames: null,
             movieList: null,
+            count : SEARCH_OFFSET,
         }),
     }
 });

@@ -58,7 +58,7 @@ const MovieCard = ({ photoUrl, title, id,overview, release , average }) => {
                   loading='lazy'
                   />
                   <div className='font-bold text-base   flex gap-1 justify-between items-start '>
-                    <div className='flex flex-col gap-1 w-64'>
+                    <div className='flex flex-col gap-1 w-64 pl-2'>
                       <p className='text-lg'>{title}</p>
                     </div>
 
@@ -78,7 +78,7 @@ const MovieCard = ({ photoUrl, title, id,overview, release , average }) => {
                     allow="autoplay; encrypted-media" 
                   >
                   </iframe>
-                  <div className='font-bold text-base   flex gap-1 justify-between items-start'>
+                  <div className='font-bold text-base pl-2  flex gap-1 justify-between items-start'>
                     <div className='flex flex-col gap-1 w-64'>
                       <p className='text-lg'>{title}</p>
                     </div>
