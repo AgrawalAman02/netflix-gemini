@@ -4,7 +4,7 @@ import lang from '../utils/languageConstants'
 import { useDispatch, useSelector } from 'react-redux'
 import { model } from '../utils/genAi'
 import { addSearchResult, decreaseCount } from '../utils/gptSlice'
-import { API_OPTIONS, SEARCH_OFFSET } from '../utils/constants'
+import { API_OPTIONS } from '../utils/constants'
 import AiSuggestion from './AI_Suggestion'
 
 const GptSearch = () => {
