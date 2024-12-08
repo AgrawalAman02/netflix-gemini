@@ -56,7 +56,7 @@ const HeaderContainer = () => {
                         }
                     </select>
                     }
-                    <button onClick={()=>handleSearchClick()} className='cursor-pointer min-w-fit'>
+                    <button onClick={()=>handleSearchClick()} className='cursor-pointer  min-w-fit'>
                         {
                             showGpt ? 
                             <p className='min-w-20 h-10 px-1 bg-white rounded-lg text-[#f22626] font-bold flex items-center justify-center'>Home</p>

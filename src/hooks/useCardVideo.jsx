@@ -1,57 +1,39 @@
-import { useEffect } from "react";
-import { API_OPTIONS } from "../utils/constants";
-import { useDispatch } from "react-redux";
-import { addCardVideo} from "../utils/movieSlice";
+// useCardVideo.js
 
+import { useState, useEffect } from 'react';
+import { API_OPTIONS } from '../utils/constants';
 
 const useCardVideo = (movieId) => {
-    const dispatch = useDispatch();
+  const [trailer, setTrailer] = useState(null);
+
+  useEffect(() => {
+    if (!movieId) return;
 
     const getMovieVideos = async () => {
-      if (!movieId) {
-        dispatch(addCardVideo(null));
-        return;
-      }
-  
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/movie/${movieId}/videos`,
           API_OPTIONS
         );
-  
-        if (!response.ok) {
-          throw new Error("Failed to fetch trailer videos.");
-        }
-  
         const data = await response.json();
-  
-        // Filter for official trailers
-        const filteredData = data.results.filter(
-          (element) =>
-            element.type === "Trailer" && element.site === "YouTube" && element.official
-        );
-  
-        const trailerVdo = filteredData.length
-          ? filteredData[0]
-          : data.results.filter(
-              (element) =>
-                  element.site === "YouTube" &&
-                  (element.type === "Teaser" || element.type === "Clip")
-              )[0] || null;
-  
-        dispatch(addCardVideo(trailerVdo));
-        
+        const trailerVideo =
+          data.results.find(
+            (video) =>
+              (video.name.toLowerCase().includes('trailer')|| video.name.toLowerCase().includes('teaser')  )&&
+              video.site === 'YouTube'
+          ) || data.results[0];
+
+        setTrailer(trailerVideo);
       } catch (error) {
-        console.error("Error fetching trailer videos:", error);
-        dispatch(addCardVideo(null));
+        console.error('Error fetching trailer videos:', error);
+        setTrailer(null);
       }
     };
-  
-    useEffect(() => {
-      getMovieVideos();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [movieId]); // Added movieId as a dependency 
 
-}
+    getMovieVideos();
+  }, [movieId]);
 
-export default useCardVideo
+  return  [trailer, setTrailer];
+};
+
+export default useCardVideo;    
