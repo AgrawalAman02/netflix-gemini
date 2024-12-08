@@ -7,6 +7,9 @@ import { addUser } from '../utils/userSlice'
 import { createUserWithEmailAndPassword, updateProfile,signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase'
 import { AVATAR } from '../utils/constants'
+// Import statements in Login.jsx
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -97,6 +100,26 @@ const Login = () => {
     setIsSignIn(!isSignIn);
     setErrorMsg(null); // Clear error message when toggling
   }
+
+const provider = new GoogleAuthProvider();
+
+const handleGoogleSignIn = async () => {
+  setIsLoading(true);
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    dispatch(addUser({
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL || AVATAR,
+    }));
+    setIsLoading(false);
+  } catch (error) {
+    setErrorMsg(error.message);
+    setIsLoading(false);
+  }
+};
 
   return (
     <div className=' min-h-screen w-screen text-white bg-black'>
@@ -197,8 +220,9 @@ const Login = () => {
               <button 
                 type="button"
                 className='p-2 py-6 w-[20rem] rounded-md h-[3.3rem] bg-[#ffffff30] text-white font-semibold flex justify-center items-center'
+                onClick={handleGoogleSignIn}
               >
-                Use a sign-in code
+                Sign in with Google
               </button>
               <button type="button" className='text-white'>Forgot password?</button>
             </>
