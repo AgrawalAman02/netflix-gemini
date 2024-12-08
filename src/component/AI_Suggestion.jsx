@@ -5,12 +5,12 @@ import MovieList from './MovieList';
 const AI_Suggestion = () => {
     const {movieNames , movieList } = useSelector((store)=>store.gpt);
     if(!movieNames) return null;
-  return (
+  return  (
     <div className=' p-4 flex flex-col gap-8  z-30'>
         {
             movieNames.map((item,index)=>{
                 return (
-                    <MovieList key={movieNames} ListTitle={movieNames[index]} movies={movieList[index]?.results} />
+                    <MovieList key={`${item}-${index}`} ListTitle={movieNames[index]} movies={movieList[index]?.results} />
                 )
             })
         }

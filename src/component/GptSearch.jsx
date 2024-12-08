@@ -12,6 +12,8 @@ const GptSearch = () => {
   const [searchInput, setSearchInput ] = useState("");
   const dispatch = useDispatch();
   const count = useSelector(store=>store.gpt.count);
+  const [isLoading, setIsLoading] = useState(false);
+  const langValue = useSelector((store)=>store.appConfig.lang);
 
   const handleSearchResults  = async (movie)=>{
     
@@ -27,7 +29,9 @@ const GptSearch = () => {
   }
 
   const handleAI= async ()=>{
+    setIsLoading(true);
     // make an api call to genAi and get the Movie results
+    dispatch(addSearchResult({ movieNames: null, movieList: null }));
 
     const prompt = "Act as a movie Recommendation system and suggest five Netflix movies for the query : " + 
         searchText.current.value  +
@@ -40,10 +44,9 @@ const GptSearch = () => {
 
     const movieList =await Promise.all(promiseList);
     dispatch(addSearchResult({ movieNames :movieNameList,movieList : movieList}));
+    setIsLoading(false);
   
   }
-
-  const langValue = useSelector((store)=>store.appConfig.lang);
 
   return (
     <div className='relative min-h-screen w-full scrollbar-hide overflow-auto'>
@@ -60,15 +63,36 @@ const GptSearch = () => {
             ref={searchText}
             placeholder={count ? ( lang[langValue].searchPlaceHolder + `    -(You have ${count} search left! )`) : `Sorry , you hae no searches left! :( )`} 
             value={searchInput}
-            onChange={(e)=>setSearchInput(e.target.value)}
-            className='w-full  p-2 px-4 h-9 rounded-xl focus:outline-none text-stone-950'
+            onChange={(e) => {
+              setSearchInput(e.target.value);
+              if (e.target.value === "") {
+                dispatch(addSearchResult({ movieNames: null, movieList: null }));
+              }
+            }}
+            aria-label="Search movies"
+            className='w-full p-2 px-4 h-9 rounded-xl focus:outline-none text-stone-950'
+            onFocus={() => {
+              if (searchInput === "") {
+                dispatch(addSearchResult({ movieNames: null, movieList: null }));
+              }
+            }}
           />
          
         </form>
       </div>
 
       <div className='relative z-20 mt-20 p-4'>
-        <AiSuggestion/>
+      {isLoading ? (
+          <div className='flex justify-center items-center'>
+            <svg className="animate-spin h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+            </svg>
+            <span className='ml-2 text-blue-500'>Loading...</span>
+          </div>
+        ) : (
+          <AiSuggestion />
+        )}
       </div>
     </div>
   )
