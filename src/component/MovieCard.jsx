@@ -74,7 +74,7 @@ const MovieCard = ({ photoUrl, title, id,overview, release , average }) => {
                   <iframe 
                     title={title}
                     className='aspect-video w-[23rem] object-cover'
-                    src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0`}
+                    src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&controls=0&modestbranding=1&rel=0`}
                     allow="autoplay; encrypted-media" 
                   >
                   </iframe>

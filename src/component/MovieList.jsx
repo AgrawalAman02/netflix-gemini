@@ -10,16 +10,16 @@ const MovieList = ({ListTitle, movies}) => {
         <div className='flex flex-nowrap gap-3 border-b items-start  overflow-x-auto scrollbar-hide scroll-smooth  '>
             {   
                 movies?.map((item)=>(
-                    item.poster_path &&
+                    item.poster_path ? (
                     <MovieCard 
                         key={item.id} 
                         id={item.id} 
                         photoUrl={item.poster_path} 
-                        title={item.title}
-                        release = {item.release_date}
+                        title={item.title || item.name}
+                        release = {item.release_date || item.first_air_date}
                         average = {item.vote_average}
-                    />      
-                ))
+                    /> )  : null    
+                )  )
             }
 
         </div>

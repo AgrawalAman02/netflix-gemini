@@ -7,6 +7,8 @@ import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
 import HeaderContainer from './HeaderContainer.jsx';
 import { useSelector } from 'react-redux';
+import useRecommendedMovies from '../hooks/useRecommendedMovies.jsx';
+import useRecommendedTvShows from '../hooks/useRecommendedTvShows.jsx';
 
 const Browse = () => {
   
@@ -17,7 +19,8 @@ const Browse = () => {
   usePopularMovies();
   useTopRatedMovies();
   useUpcomingMovies();
-  
+  useRecommendedMovies();
+  useRecommendedTvShows();
 
   return (
     <div className='max-h-screen w-screen relative'>

@@ -11,7 +11,7 @@ export const API_OPTIONS= {
           accept: 'application/json',
           Authorization: `Bearer ${TMDB_API_TOKEN}`
         }
-};
+}
 
 export const IMG_CDN_URL = 
         "https://image.tmdb.org/t/p/w200"
@@ -28,10 +28,10 @@ export const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
 
 export const SEARCH_OFFSET = 5;
 
-export const FIREBASE_API_KEY=process.env.REACT_APP-FIREBASE_API_KEY;
-export const FIREBASE_AUTH_DOMAIN=process.env.REACT_APP-FIREBASE_AUTH_DOMAIN;
-export const FIREBASE_PROJECT_ID=process.env.REACT_APP-FIREBASE_PROJECT_ID;
-export const FIREBASE_STORAGE_BUCKET=process.env.REACT_APP-FIREBASE_STORAGE_BUCKET;
-export const FIREBASE_MESSAGING_SENDER_ID=process.env.REACT_APP-FIREBASE_MESSAGING_SENDER_ID;
-export const FIREBASE_APP_ID=process.env.REACT_APP-FIREBASE_APP_ID;
-export const FIREBASE_MEASUREMENT_ID=process.env.REACT_APP-FIREBASE_MEASUREMENT_ID;
+export const FIREBASE_API_KEY=process.env.REACT_APP_FIREBASE_API_KEY;
+export const FIREBASE_AUTH_DOMAIN=process.env.REACT_APP_FIREBASE_AUTH_DOMAIN;
+export const FIREBASE_PROJECT_ID=process.env.REACT_APP_FIREBASE_PROJECT_ID;
+export const FIREBASE_STORAGE_BUCKET=process.env.REACT_APP_FIREBASE_STORAGE_BUCKET;
+export const FIREBASE_MESSAGING_SENDER_ID=process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID;
+export const FIREBASE_APP_ID=process.env.REACT_APP_FIREBASE_APP_ID;
+export const FIREBASE_MEASUREMENT_ID=process.env.REACT_APP_FIREBASE_MEASUREMENT_ID;
