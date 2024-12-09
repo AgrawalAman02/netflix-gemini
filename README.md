@@ -2,7 +2,7 @@
 
 ![Project Logo](./src/assets/images/Netflix_Logo_PMS.png)
 
-Netflix-GPT is a web application that enhances your movie browsing experience by integrating the Gemini model to provide personalized movie recommendations. Users can sign in using their Google account for a seamless experience and get AI-generated suggestions tailored to their preferences.
+Netflix is a web application that enhances your movie browsing experience by integrating the Gemini model to provide personalized movie recommendations. Users can sign in using their Google account for a seamless experience and get AI-generated suggestions tailored to their preferences.
 
 ## Live Demo
 
