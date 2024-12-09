@@ -12,7 +12,7 @@ const SecondaryContainer = () => {
     const recommendedTvShows = useSelector((store)=>store.movies.recommendedTvShows);
 
   return (
-    <div className='flex flex-col gap-8 mt-48 md:-mt-40 z-20 relative'>
+    <div className='flex flex-col gap-1 md:gap-8 mt-48 md:-mt-40 z-20 relative'>
         <MovieList ListTitle={"Now Playing Movies"} movies={nowPlayingMovies} />
         <MovieList ListTitle={"Popular"} movies={popularMovies} />
         <MovieList ListTitle={"Top Rated"} movies={topRatedMovies} />

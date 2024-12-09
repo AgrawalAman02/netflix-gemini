@@ -6,7 +6,7 @@ const AI_Suggestion = () => {
     const {movieNames , movieList } = useSelector((store)=>store.gpt);
     if(!movieNames) return null;
   return  (
-    <div className=' p-4 flex flex-col gap-8  z-30'>
+    <div className=' p-2 md:p-4 flex flex-col gap-1 md:gap-8  z-30'>
         {
             movieNames.map((item,index)=>{
                 return (

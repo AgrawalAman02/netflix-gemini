@@ -12,7 +12,7 @@ const MainContainer = () => {
   useEffect(() => {
     if (movies && movies.length > 0) {
       
-      setMainMovie(movies[17]);
+      setMainMovie(movies[13]);
     }
   }, [movies]);
 

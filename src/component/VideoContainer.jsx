@@ -17,10 +17,10 @@ const VideoContainer = ({movieId}) => {
   
 
   return (
-    <div className='h-96 md:h-screen w-screen '>
+    <div className='h-28 pt-6 md:pt-0 md:h-screen w-screen '>
         <iframe 
         title='NetFlix'
-        className='w-screen h-screen aspect-video'
+        className='w-screen  md:h-screen  aspect-video'
         src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3&fs=0&disablekb=1&playlist=${trailer?.key}&playsinline=1`}
         allow="autoplay; encrypted-media" 
         referrerPolicy="strict-origin-when-cross-origin" >

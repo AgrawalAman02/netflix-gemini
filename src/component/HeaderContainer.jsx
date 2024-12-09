@@ -40,13 +40,13 @@ const HeaderContainer = () => {
         <div className='header'>
             <Header/>
             {user && showGpt && <GptSearch/>}
-            <div className='flex gap-4  fixed z-40 right-12 top-6'>
+            <div className='flex gap-2 md:gap-4  fixed z-40 right-2 md:right-12 top-3 md:top-6'>
                 {user && user.photoURL && (
                 <>
                     {showGpt &&  <select 
                         name="langSelect" 
                         id="langSelect" 
-                        className=' rounded-xl bg-red-600 font-semibold bg-opacity-40 p-.5 px-2'
+                        className=' rounded-xl bg-red-600  font-medium md:font-semibold text-sm md:text-base bg-opacity-40 p-0.5 px-0.5 md:px-2'
                         onChange={(e)=>handleLanguageChange(e)}
                     >
                         {
@@ -59,16 +59,16 @@ const HeaderContainer = () => {
                     <button onClick={()=>handleSearchClick()} className='cursor-pointer  min-w-fit'>
                         {
                             showGpt ? 
-                            <p className='min-w-20 h-10 px-1 bg-white rounded-lg text-[#f22626] font-bold flex items-center justify-center'>Home</p>
+                            <p className='h-8 min-w-12 md:min-w-20 md:h-10 px-1 bg-white rounded-lg text-[#f22626] font-semibold md:font-bold text-sm md:text-base flex items-center justify-center'>Home</p>
                             :
-                            <img src={searchIcon} alt="Search" />
+                            <img src={searchIcon} alt="Search " className='h-8 md:h-10' />
                         }
                     </button>
-                    <img src={user.photoURL} alt="User Avatar" className='w-10 h-10 rounded-md' />
+                    <img src={user.photoURL} alt="User Avatar" className='w-8 h-8 md:w-10 md:h-10 rounded-md' />
                 </>
                 )}
                 <button 
-                className=' min-w-20 h-10 px-1 bg-[#f22626] rounded-lg text-white font-bold'
+                className='h-8 min-w-16 md:min-w-20 md:h-10 px-1 bg-[#f22626] rounded-lg text-white font-semibold md:font-bold text-sm md:text-base'
                 onClick={()=>handleSignOutClick()}
                 >{showGpt? lang[langValue].signOut : "Sign Out"}</button>
                 

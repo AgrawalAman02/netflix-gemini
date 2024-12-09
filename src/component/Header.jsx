@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { resetGptState } from '../utils/gptSlice';
+import netflixMobile from "../assets/images/favicon.png"
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -33,9 +34,11 @@ const Header = () => {
     return ()=>unsubscribe();
 
   },[]);
+
   return (
-    <div className={`fixed ${loggedIn?"px-[1.5rem]":"px-[9.7rem] bg-gradient-to-b from-black"}  py-2  h-20 z-30`}>
-        <img src={netflixIcon} alt="netfloxIcon"  className='w-[11.5rem] h-[4.8rem]'/>
+    <div className={`fixed ${loggedIn?" md:px-[1.5rem] ":"px-[6.6rem] md:px-[9.7rem] bg-gradient-to-b from-black"} py-3 md:py-2 h-16  md:h-20 z-30`}>
+        <img src={netflixIcon} alt="netfloxIcon"  className={` ${loggedIn ? "hidden md:block md:w-[11.5rem]  md:h-[4.8rem]" : "w-[11rem] md:w-[11.5rem] h-[4.2rem] md:h-[4.8rem]"}  w-[11rem] md:w-[11.5rem] h-[4.2rem] md:h-[4.8rem]`}/>
+        <img src={netflixMobile} alt="netflixIconS" className={`${loggedIn ? "md:hidden h-[2rem] w-[3rem]":" hidden"} `} />
     </div>
   )
 }

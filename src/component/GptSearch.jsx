@@ -51,7 +51,7 @@ const GptSearch = () => {
   return (
     <div className='relative min-h-screen w-full scrollbar-hide overflow-auto'>
       <img src={LoginBg} alt="LoginBg" className='absolute inset-0 z-10 h-full w-full object-cover opacity-20' />
-      <div className='bg-red-700 w-[45rem] fixed left-1/4 top-6 z-30 p-1 h-11 rounded-2xl shadow-lg '>
+      <div className='bg-red-700 w-[21rem] md:w-[45rem] fixed  left-6  md:left-1/4 top-16 md:top-6 z-30 p-1 h-11 rounded-2xl shadow-lg '>
         <form action="submit" className='flex gap-2' onSubmit={(e)=>{
           e.preventDefault()
           count && handleAI();
@@ -61,7 +61,7 @@ const GptSearch = () => {
           <input 
             type="text" 
             ref={searchText}
-            placeholder={count ? ( lang[langValue].searchPlaceHolder + `    -(You have ${count} search left! )`) : `Sorry , you hae no searches left! :( )`} 
+            placeholder={count ? ( lang[langValue].searchPlaceHolder +  `   -(You have ${count} search left! )`) : `Sorry , you hae no searches left! :( )`} 
             value={searchInput}
             onChange={(e) => {
               setSearchInput(e.target.value);
@@ -70,7 +70,7 @@ const GptSearch = () => {
               }
             }}
             aria-label="Search movies"
-            className='w-full p-2 px-4 h-9 rounded-xl focus:outline-none text-stone-950'
+            className='w-full p-1 md:p-2 px-2 md:px-4 h-9 rounded-xl focus:outline-none text-stone-950 placeholder:text-xs md:placeholder:text-base '
             onFocus={() => {
               if (searchInput === "") {
                 dispatch(addSearchResult({ movieNames: null, movieList: null }));
@@ -81,7 +81,7 @@ const GptSearch = () => {
         </form>
       </div>
 
-      <div className='relative z-20 mt-20 p-4'>
+      <div className='relative z-20 mt-28 md:mt-20 md:p-4'>
       {isLoading ? (
           <div className='flex justify-center items-center'>
             <svg className="animate-spin h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

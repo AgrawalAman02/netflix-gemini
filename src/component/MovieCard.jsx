@@ -25,32 +25,30 @@ const MovieCard = ({ photoUrl, title, id,overview, release , average }) => {
   return (
     <div>
       <div
-        className='flex flex-col gap-2 w-48 flex-shrink-0 mb-2 cursor-pointer group'
+        className='flex flex-col gap-0.5 md:gap-2 w-48 flex-shrink-0 md:mb-2 cursor-pointer group'
         onClick ={handleCardClick}
         onMouseLeave={handleMouseLeave}
       >
-        <div className='w-48 h-60 relative'>
+        <div className='w-40 md:w-48 h-52 md:h-60 relative'>
           {
             !videoFetched ? (
               <>
                 <img
                   src={IMG_CDN_URL + photoUrl}
-                  className='w-48 h-60 rounded-lg'
+                  className='w-40 md:w-48 h-52 md:h-60 rounded-lg'
                   alt={`${title} img`}
                   loading='lazy'
                 />
-                <img className='absolute top-2 left-2  w-8 h-8 z-10 '
+                <img className='absolute top-1 left-1 w-6 h-6 md:top-2 md:left-2  md:w-8 md:h-8 z-10 '
                  src={playIcon} alt="playicon" />
 
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                <p className="text-white text-sm font-semibold">Click for more details</p>
-              </div>
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
               
               </>
               
             ) : (
               trailer == null ? (
-                <div className='w-96 h-72 bg-black rounded-lg border-2 shadow-lg border-red-700 -ml-16 z-50  relative flex flex-col gap-1 bg-opacity-95 '>
+                <div className='w-72 md:w-96 h-60 md:h-72 bg-black rounded-lg border-2 shadow-lg border-red-700 -ml-16 z-50  relative flex flex-col gap-1 bg-opacity-95 '>
                   <img
                   src={IMG_CDN_URL + photoUrl}
                   className='w-96 h-48'
@@ -70,15 +68,15 @@ const MovieCard = ({ photoUrl, title, id,overview, release , average }) => {
                 </div>
               ) : (
                 // Render the trailer video here
-                <div className='w-96 h-72 bg-black rounded-lg border-2 shadow-lg border-red-700 -ml-16 z-50  absolute flex flex-col gap-1 bg-opacity-95'>
+                <div className='w-72 md:w-96 h-60 md:h-72 bg-black rounded-lg border-2 shadow-lg border-red-700 -ml-16 z-50  absolute flex flex-col gap-1 bg-opacity-95'>
                   <iframe 
                     title={title}
-                    className='aspect-video w-[23rem] object-cover'
+                    className='aspect-video w-[17.8rem] md:w-[23rem] object-cover'
                     src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&controls=0&modestbranding=1&rel=0`}
                     allow="autoplay; encrypted-media" 
                   >
                   </iframe>
-                  <div className='font-bold text-base pl-2  flex gap-1 justify-between items-start'>
+                  <div className='font-semibold md:font-bold text-base pl-2  flex gap-1 justify-between items-start'>
                     <div className='flex flex-col gap-1 w-64'>
                       <p className='text-lg'>{title}</p>
                     </div>

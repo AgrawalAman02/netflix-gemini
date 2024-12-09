@@ -125,7 +125,7 @@ const handleGoogleSignIn = async () => {
     <div className=' min-h-screen w-screen text-white bg-black'>
       <Header/>
       <img src={LoginBg} alt="LoginBg" className='absolute z-10 h-full w-full object-cover opacity-65' />
-      <div className='absolute bg-[#000000d4] w-[28rem] flex flex-col gap-8 rounded-md opacity-95 items-start px-16 justify-center py-8 mx-auto top-0 right-0 left-0 z-40 my-24'>
+      <div className='absolute bg-[#000000d4] w-[23.5rem] md:w-[28rem] flex flex-col gap-8 rounded-md opacity-95 items-start px-6 md:px-16 justify-center py-8 mx-auto top-0 right-0 left-0 z-20 my-24'>
         <h2 className='font-bold text-3xl'>{isSignIn ? "Sign In" : "Sign Up"}</h2>
         {/* error msg */}
           {errorMsg && (
