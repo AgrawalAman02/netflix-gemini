@@ -59,7 +59,7 @@ const HeaderContainer = () => {
                     <button onClick={()=>handleSearchClick()} className='cursor-pointer  min-w-fit'>
                         {
                             showGpt ? 
-                            <p className='h-8 min-w-12 md:min-w-20 md:h-10 px-1 bg-white rounded-lg text-[#f22626] font-semibold md:font-bold text-sm md:text-base flex items-center justify-center'>Home</p>
+                            <p className='h-8 min-w-12 md:min-w-20 md:h-10 px-1 bg-white rounded-lg text-[#f22626] font-semibold md:font-bold text-sm md:text-base flex items-center justify-center'>{lang[langValue].home}</p>
                             :
                             <img src={searchIcon} alt="Search " className='h-8 md:h-10' />
                         }
