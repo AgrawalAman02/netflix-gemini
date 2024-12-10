@@ -94,6 +94,7 @@ Netflix is a web application that enhances your movie browsing experience by int
 
 ## Project Structure
 - `src/components`: React components for different parts of the application.
+- `src/assests`: Assests like images are present here.
 - `src/hooks`: Custom hooks for fetching data and other logic.
 - `src/utils`: Utility functions, constants, and API configurations.
 - `public`: Public assets and the main HTML template.
