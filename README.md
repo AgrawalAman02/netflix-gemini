@@ -6,7 +6,7 @@ Netflix is a web application that enhances your movie browsing experience by int
 
 ## Live Demo
 
-- Check out the live application [here](https://netflix-gpt-aman2eac.web.app)
+- Check out the live application [here](https://netflix--gemini.vercel.app/)
 
 ## Features
 
